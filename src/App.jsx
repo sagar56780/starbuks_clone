@@ -1,29 +1,38 @@
-import React from 'react'
-import logo from "./assets/logo.png"
+import React from "react";
+import Dashboard from "./Dashboard";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Gift from "./component/Gift";
+import Home from "./component/Home";
+import Pay from "./component/Pay";
+import Store from "./component/Store";
 const App = () => {
-  return (
-    <nav className=' h-20 w-screen flex items-center gap-1 border flex-grow border-slate-950 '>
-       <div className=' w-3/6 h-4/5 flex gap-16 justify-end flex-shrink'> 
-            <div className=' flex items-center '><img src={logo} alt="" className='size-10' /></div>
-            <div className='h-full w-1/8 border-black  flex justify-center items-center active:border-b-2 '>Home</div>
+  let router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Dashboard />,
+      children:[
+        {
+        path:'/home',
+        element:<Home/>
+        },
+        {
+          path:'/gift',
+          element:<Gift/>
+        },
+        {
+          path:'/pay',
+          element:<Pay/>
+        },
+        {
+          path:'/store',
+          element:<Store/>
+        }
 
-            <div className='h-full w-1/8 border-black  flex justify-center items-center   border-b-2'>Gift</div>
+    ]
+    },
+  ]);
 
-            <div className='h-full w-1/8 border-black  flex justify-center items-center  border-b-2'>Order</div>
+  return <RouterProvider router={router}></RouterProvider>;
+};
 
-            <div className='h-full w-1/8 border-black  flex justify-center items-center  border-b-2'>Pay</div>
-
-            <div className='h-full w-1/8 border-black  flex justify-center items-center  border-b-2'>Store</div>
-       </div>
-       <div className='border-black border w-3/6 h-4/5 flex items-center justify-center gap-20'>
-        <div className='w-64 h-8 border border-black'>  <input type="text" /></div>
-       <i className="fa-regular fa-user border-b-black border h-6"></i>
-
-       </div>
-    
-    
-    </nav>
-  )
-}
-
-export default App
+export default App;
