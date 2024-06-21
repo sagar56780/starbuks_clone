@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.bg-green-700{
+    background: #254336
+}
+.active{
+    
+    
+    border-bottom:2px solid  #254336;
+}
